@@ -1,7 +1,17 @@
+var currentTooltip
+
 document.addEventListener('DOMContentLoaded', (event) => {
   document.getElementById("selChoosing").onchange = doChoosing
   document.getElementById("selSpread").onchange = doSpread
+  currentTooltip = document.getElementById("tooltip")
 })
+
+window.onmousemove = (e) => {
+  var x = e.clientX,
+      y = e.clientY
+  currentTooltip.style.top = (y + 20) + 'px'
+  currentTooltip.style.left = (x + 20) + 'px'
+}
 
 const clearTableau = async() => {
   document.getElementById("tableau").innerHTML = ""
@@ -68,14 +78,29 @@ const dealCard = (card, continuedRow) => {
   if (!continuedRow) { img.classList.add("new-row") }
   img.src = "images/card-back.jpg"
   img.id = card.image
+  //img.title = card.description
   img.onclick = (e) => {
     if(e.target.src.indexOf("card-back") != -1) {
       e.target.src = "images/" + e.target.id
+      e.target.classList.add("faceup")
     } else {
       e.target.src = "images/card-back.jpg"
+      e.target.classList.remove("faceup")
     }
   }
+  img.onmouseover = (e) => {
+    currentTooltip = e.target.nextElementSibling
+  }
   tableau.appendChild(img)
+
+  // Tooltip
+  var tooltipBackground = document.createElement("div")
+  tooltipBackground.classList.add("tooltip-background")
+  var tooltip = document.createElement("span")
+  tooltip.classList.add("tooltip")
+  tooltip.innerHTML = card.name + " (" + card.alignment + ", " + card.ability + ") " + card.description
+  tooltipBackground.appendChild(tooltip)
+  tableau.appendChild(tooltipBackground)
 }
 
 const shuffle = async(deck) => {
