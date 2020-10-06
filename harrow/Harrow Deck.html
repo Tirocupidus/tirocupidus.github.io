@@ -1,0 +1,53 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Harrow Deck</title>
+  <meta name="description" content="Harrow, a tarot-like deck created by Paizo.">
+  <meta name="author" content="Tirocupidus">
+
+  <link rel="stylesheet" href="css/style.css?v=1.0">
+
+</head>
+
+<!--
+
+1. The Choosing
+  a. Choose one ability that best suits the subjects' question
+  b. Shuffle/deal all 9 cards of that ability face down
+  c. Have each subject reveal one card
+2. The Spread
+  a. Shuffle all 54 cards then deal 9 in a 3x3 pattern
+  b.
+
+-->
+
+<body>
+  <script src="js/script.js"></script>
+  <script src="js/deck.js"></script>
+  <h1 id="heading">Harrow</h1>
+  <main>
+    <div id="controls">
+      <!-- The Choosing: dropdown of abilities (buttons) -->
+      <select name="The Choosing" id="selChoosing">
+        <option value="The Choosing">The Choosing</option>
+        <option value="Strength">Strength</option>
+        <option value="Dexterity">Dexterity</option>
+        <option value="Constitution">Constitution</option>
+        <option value="Intelligence">Intelligence</option>
+        <option value="Wisdom">Wisdom</option>
+        <option value="Charisma">Charisma</option>
+      </select>
+      <!-- The Spread: button -->
+      <select name = "The Spread" id="selSpread">
+        <option value="The Spread">The Spread</option>
+        <option value="1x3">1x3</option>
+        <option value="3x3">3x3</option>
+      </select>
+    </div>
+    <div id="tableau"></div>
+  </main>
+</body>
+</html>
