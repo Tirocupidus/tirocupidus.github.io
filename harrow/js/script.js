@@ -66,13 +66,13 @@ const dealCard = (card, continuedRow) => {
   var img = document.createElement("img")
   img.classList.add("card")
   if (!continuedRow) { img.classList.add("new-row") }
-  img.src = "images/card-back.png"
+  img.src = "images/card-back.jpg"
   img.id = card.image
   img.onclick = (e) => {
     if(e.target.src.indexOf("card-back") != -1) {
       e.target.src = "images/" + e.target.id
     } else {
-      e.target.src = "images/card-back.png"
+      e.target.src = "images/card-back.jpg"
     }
   }
   tableau.appendChild(img)
