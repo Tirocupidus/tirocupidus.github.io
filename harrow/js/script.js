@@ -5,13 +5,14 @@ document.addEventListener('DOMContentLoaded', (event) => {
   document.getElementById("selSpread").onchange = doSpread
   currentTooltip = document.getElementById("tooltip")
 })
-
+/*
 window.onmousemove = (e) => {
   var x = e.clientX,
       y = e.clientY
   currentTooltip.style.top = (y + 20) + 'px'
   currentTooltip.style.left = (x + 20) + 'px'
 }
+*/
 
 const clearTableau = async() => {
   document.getElementById("tableau").innerHTML = ""
@@ -89,7 +90,10 @@ const dealCard = (card, continuedRow) => {
     }
   }
   img.onmouseover = (e) => {
+    var rect = e.target.getBoundingClientRect()
     currentTooltip = e.target.nextElementSibling
+    currentTooltip.style.top = (rect.top) + 'px'
+    currentTooltip.style.left = (rect.left) + 'px'
   }
   tableau.appendChild(img)
 
